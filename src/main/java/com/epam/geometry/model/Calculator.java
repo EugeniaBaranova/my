@@ -27,7 +27,6 @@ public class Calculator {
                                     coordinatePlane.getIntersectionPointWithCoordinateAxes()
                                             .getX());
         }
-
         double volumeOfSphericalCap = Math.PI *
                 Math.pow(heightOfSphericalCap, 2) / 3 *
                 (3 * sphere.getRadius() - heightOfSphericalCap);
