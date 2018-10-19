@@ -26,8 +26,8 @@ public class SphereCalculatorTest {
     private static final double VOLUME_WHEN_RADIUS_IS_THREE = 113.09733552923255;
     private static final double VOLUME_WHEN_RADIUS_IS_TEN = 4188.790204786391;
     private static final double VOLUME_RATIO_AFTER_CROSS_SECTION_WHEN_PLANE_INTERSECTS_X_AXIS = 1.8409090909090908;
-    private static final double VOLUME_RATIO_AFTER_CROSS_SECTION_WHEN_PLANE_INTERSECTS_Y_AXIS = 1;
-    private static final double VOLUME_RATIO_AFTER_CROSS_SECTION_WHEN_PLANE_INTERSECTS_Z_AXIS = 1;
+    private static final double VOLUME_RATIO_AFTER_CROSS_SECTION_WHEN_PLANE_INTERSECTS_Y_AXIS = 2;
+    private static final double VOLUME_RATIO_AFTER_CROSS_SECTION_WHEN_PLANE_INTERSECTS_Z_AXIS = 2;
 
     @Test(expected = ServiceException.class)
     public void shouldCalculateSurfaceAreaWhenRadiusIsNegative() {
