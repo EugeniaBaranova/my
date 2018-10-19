@@ -1,7 +1,9 @@
 package com.epam.geometry.model.entity;
 
 public class Sphere {
+
     private Point center;
+
     private double radius;
 
     public Point getCenter() {
