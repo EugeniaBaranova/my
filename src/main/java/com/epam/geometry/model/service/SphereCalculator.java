@@ -32,29 +32,28 @@ public class SphereCalculator {
         throw new ServiceException();
     }
 
-    public double calculateVolumeRatioAfterCrossSection(Sphere sphere, CoordinatePlane coordinatePlane) {
+    public double calculateVolumeRatio(Sphere sphere, CoordinatePlane coordinatePlane) {
         double heightOfSphericalCap = 0.0;
         Point sphereCenter = sphere.getCenter();
-        Point intersectionPointOfCoordinatePlane = coordinatePlane.getIntersectionWithAxis();
+        Point intersection = coordinatePlane.getIntersectionWithAxis();
 
         List<Double> xOfCenterAndIntersectionPoint = new ArrayList<>(Arrays.asList(
                 sphereCenter.getX(),
-                intersectionPointOfCoordinatePlane.getX()));
+                intersection.getX()));
         List<Double> yOfCenterAndIntersectionPoint = new ArrayList<>(Arrays.asList(
                 sphereCenter.getY(),
-                intersectionPointOfCoordinatePlane.getY()));
+                intersection.getY()));
         List<Double> zOfCenterAndIntersectionPoint = new ArrayList<>(Arrays.asList(
                 sphereCenter.getZ(),
-                intersectionPointOfCoordinatePlane.getZ()));
-
+                intersection.getZ()));
 
         Map<Boolean, List<Double>> conditionsToChooseCoordinates = new HashMap<>();
-        conditionsToChooseCoordinates.put(intersectionPointOfCoordinatePlane.getZ() == 0 &&
-                intersectionPointOfCoordinatePlane.getY() == 0, xOfCenterAndIntersectionPoint);
-        conditionsToChooseCoordinates.put(intersectionPointOfCoordinatePlane.getZ() == 0 &&
-                intersectionPointOfCoordinatePlane.getX() == 0, yOfCenterAndIntersectionPoint);
-        conditionsToChooseCoordinates.put(intersectionPointOfCoordinatePlane.getX() == 0 &&
-                intersectionPointOfCoordinatePlane.getY() == 0, zOfCenterAndIntersectionPoint);
+        conditionsToChooseCoordinates.put(intersection.getZ() == 0 &&
+                intersection.getY() == 0, xOfCenterAndIntersectionPoint);
+        conditionsToChooseCoordinates.put(intersection.getZ() == 0 &&
+                intersection.getX() == 0, yOfCenterAndIntersectionPoint);
+        conditionsToChooseCoordinates.put(intersection.getX() == 0 &&
+                intersection.getY() == 0, zOfCenterAndIntersectionPoint);
 
         for (Boolean condition : conditionsToChooseCoordinates.keySet()) {
             if (condition) {

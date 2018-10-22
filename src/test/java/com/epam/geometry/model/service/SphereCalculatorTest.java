@@ -141,6 +141,6 @@ public class SphereCalculatorTest {
     private double getResultForVolumeRatioTest(Point center,int radius, CoordinatePlane coordinatePlane) {
         sphere.setCenter(center);
         sphere.setRadius(radius);
-        return sphereCalculator.calculateVolumeRatioAfterCrossSection(sphere, coordinatePlane);
+        return sphereCalculator.calculateVolumeRatio(sphere, coordinatePlane);
     }
 }

@@ -1,6 +1,6 @@
 package com.epam.geometry.model.service.reader;
 
-import com.epam.geometry.model.service.reader.DataReader;
+import com.epam.geometry.model.service.reader.exception.MissingDataException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class DataReaderTest {
     @Test
     public void shouldReadFileAndReturnListOfStringsWhenDataIsFound() throws MissingDataException {
         //when
-        List<String> lines = dataReader.read(FILE_PATH);
+        List<String> lines = dataReader.getValidLines(FILE_PATH);
         //then
         Assert.assertEquals(3, lines.size());
     }
@@ -22,6 +22,9 @@ public class DataReaderTest {
     @Test(expected = MissingDataException.class)
     public void shouldReadFileAndThrowMissingDataExceptionWhenDataNotFound() throws MissingDataException {
         //when
-        dataReader.read("D:\\spheres.txt");
+
+        final String unexistingPath = "D:\\sphasdasdasdasd";
+
+        dataReader.getValidLines(unexistingPath);
     }
 }
