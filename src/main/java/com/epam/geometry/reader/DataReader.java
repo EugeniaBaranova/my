@@ -1,6 +1,7 @@
 package com.epam.geometry.reader;
 
 import com.epam.geometry.reader.exception.MissingDataException;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,7 +13,10 @@ import java.util.Optional;
 
 public class DataReader {
 
+    private static final Logger logger = Logger.getLogger(DataReader.class);
+
     public List<String> readLines(String fileName) throws MissingDataException {
+        logger.info("Read file.");
 
         List<String> lines = new ArrayList<>();
         Optional<String> filePath = getFilePath(fileName);
@@ -23,7 +27,7 @@ public class DataReader {
                     lines.add(line);
                 }
             } catch (IOException e) {
-                //TODO Logger
+                logger.error("Can't read file.", e);
                 throw new MissingDataException(e);
             }
         }

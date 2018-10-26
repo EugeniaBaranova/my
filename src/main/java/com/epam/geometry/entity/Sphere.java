@@ -2,9 +2,19 @@ package com.epam.geometry.entity;
 
 public class Sphere implements Shape{
 
+    private long id;
+
     private Point center;
 
     private double radius;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public Point getCenter() {
         return center;
