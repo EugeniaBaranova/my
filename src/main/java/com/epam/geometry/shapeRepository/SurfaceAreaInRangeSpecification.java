@@ -7,7 +7,7 @@ import com.epam.geometry.service.commandsForVolumeRatio.CommandProvider;
 
 import java.util.Arrays;
 
-public class VolumeInRangeSpecification implements Specification<Sphere>{
+public class SurfaceAreaInRangeSpecification implements Specification<Sphere>{
 
     private double minVolume;
     private double maxVolume;
@@ -16,14 +16,14 @@ public class VolumeInRangeSpecification implements Specification<Sphere>{
                     CoordinatePlane.XOZ,
                     CoordinatePlane.XYO));
 
-    public VolumeInRangeSpecification(double minVolume, double maxVolume) {
+    public SurfaceAreaInRangeSpecification(double minVolume, double maxVolume) {
         this.minVolume = minVolume;
         this.maxVolume = maxVolume;
     }
 
     @Override
     public boolean specified(Sphere object) {
-        double currentVolume = sphereCalculator.calculateVolume(object);
+        double currentVolume = sphereCalculator.calculateSurfaceArea(object);
         return Double.compare(currentVolume, minVolume) >= 0 && Double.compare(currentVolume, maxVolume) <= 0;
     }
 }

@@ -5,6 +5,7 @@ import com.epam.geometry.entity.Shape;
 import com.epam.geometry.entity.Sphere;
 import com.epam.geometry.creator.validator.SphereValidationResult;
 import com.epam.geometry.creator.validator.ShapeValidator;
+import com.epam.geometry.generator.IDGenerator;
 import com.epam.geometry.stringParser.PossibleShapeDataKeeper;
 import com.epam.geometry.stringParser.PossibleSphereDataKeeper;
 
@@ -34,6 +35,8 @@ public class SphereCreator implements ShapeCreator {
                             sphereParameters.getPossibleYofCenter(),
                             sphereParameters.getPossibleZofCenter()));
                     sphere.setRadius(sphereParameters.getPossibleRadius());
+                    sphere.setId(IDGenerator.getInstance()
+                            .getCount());
                     spheres.add(sphere);
                 }
             }

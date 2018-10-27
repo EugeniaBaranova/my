@@ -1,14 +1,11 @@
 package com.epam.geometry.service;
 
 import com.epam.geometry.entity.CoordinatePlane;
-import com.epam.geometry.entity.Point;
 import com.epam.geometry.entity.Sphere;
 import com.epam.geometry.service.commandsForVolumeRatio.Command;
 import com.epam.geometry.service.commandsForVolumeRatio.CommandProvider;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 
 public class SphereCalculator {
@@ -22,14 +19,15 @@ public class SphereCalculator {
     }
 
     public double calculateSurfaceArea(Sphere sphere) {
-        return calculate(sphere, 2, 4);
+        return calculateWithFormula(sphere, 2, 4);
     }
 
     public double calculateVolume(Sphere sphere) {
-        return calculate(sphere, 3, 4 / 3);
+        return calculateWithFormula(sphere, 3, 4 / 3);
     }
 
-    private double calculate(Sphere sphere, double x, double y) {
+    //TODO the best name
+    private double calculateWithFormula(Sphere sphere, double x, double y) {
         double result = 0;
         if (sphere != null) {
             if (sphere.getRadius() > 0) {
@@ -69,20 +67,18 @@ public class SphereCalculator {
     }
 
     public boolean doesContactWithPlane(Sphere sphere, CoordinatePlane coordinatePlane) {
-        Double result = doesContain(sphere, coordinatePlane);
+        Double result = getDeltaCoordinates(sphere, coordinatePlane);
         return result != null && result == 0;
-
     }
 
 
     private boolean doesCrossCoordinatePlane(Sphere sphere, CoordinatePlane coordinatePlane) {
-        Double result = doesContain(sphere, coordinatePlane);
+        Double result = getDeltaCoordinates(sphere, coordinatePlane);
         return result != null && result < 0;
-
     }
 
 
-    private Double doesContain(Sphere sphere, CoordinatePlane coordinatePlane) {
+    private Double getDeltaCoordinates(Sphere sphere, CoordinatePlane coordinatePlane) {
 
         if (sphere != null && coordinatePlane != null) {
             for (CoordinatePlane plane : this.coordinatePlanes) {

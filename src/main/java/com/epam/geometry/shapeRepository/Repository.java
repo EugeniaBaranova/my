@@ -2,6 +2,7 @@ package com.epam.geometry.shapeRepository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 public interface Repository<T> {
 
@@ -9,7 +10,7 @@ public interface Repository<T> {
 
     void remove(T object);
 
-    void update(T object);
+    void update(T object, long id);
 
-    List<T> findBy(Specification specification);
+    Optional<List<T>> findBy(Specification specification);
 }

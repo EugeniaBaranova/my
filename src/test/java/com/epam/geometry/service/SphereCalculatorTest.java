@@ -122,7 +122,7 @@ public class SphereCalculatorTest {
         //when
         double result = sphereCalculator.calculateVolumeRatio(sphere, CoordinatePlane.OYZ);
         //then
-        Assert.assertThat(VOLUME_RATIO,is(result));
+        Assert.assertThat(VOLUME_RATIO, is(result));
     }
 
     @Test
@@ -133,7 +133,7 @@ public class SphereCalculatorTest {
         //when
         double result = sphereCalculator.calculateVolumeRatio(sphere, CoordinatePlane.XOZ);
         //then
-        Assert.assertThat(VOLUME_RATIO,is(result));
+        Assert.assertThat(VOLUME_RATIO, is(result));
     }
 
     @Test
@@ -144,7 +144,7 @@ public class SphereCalculatorTest {
         //when
         double result = sphereCalculator.calculateVolumeRatio(sphere, CoordinatePlane.XYO);
         //then
-        Assert.assertThat(VOLUME_RATIO,is(result));
+        Assert.assertThat(VOLUME_RATIO, is(result));
     }
 
     @Test
@@ -155,7 +155,7 @@ public class SphereCalculatorTest {
         //when
         double result = sphereCalculator.calculateVolumeRatio(sphere, CoordinatePlane.XYO);
         //then
-        Assert.assertThat(0.0,is(result));
+        Assert.assertThat(0.0, is(result));
     }
 
     @Test
@@ -166,7 +166,7 @@ public class SphereCalculatorTest {
         //when
         double result = sphereCalculator.calculateVolumeRatio(sphere, CoordinatePlane.XOZ);
         //then
-        Assert.assertThat(0.0,is(result));
+        Assert.assertThat(0.0, is(result));
     }
 
     @Test
@@ -177,7 +177,48 @@ public class SphereCalculatorTest {
         //when
         double result = sphereCalculator.calculateVolumeRatio(sphere, CoordinatePlane.OYZ);
         //then
-        Assert.assertThat(0.0,is(result));
+        Assert.assertThat(0.0, is(result));
+    }
+
+    @Test
+    public void shouldNotCalculateVolumeRatioWhenGivenNullInsteadOfSphere() {
+        //when
+        double result = sphereCalculator.calculateVolumeRatio(null, CoordinatePlane.OYZ);
+        //then
+        Assert.assertThat(0.0, is(result));
+    }
+
+    @Test
+    public void shouldNotCalculateVolumeRatioWhenGivenNullInsteadOfPlane() {
+        //given
+        sphere.setCenter(new Point(11, 11, 11));
+        sphere.setRadius(10);
+        //when
+        double result = sphereCalculator.calculateVolumeRatio(sphere, null);
+        //then
+        Assert.assertThat(0.0, is(result));
+    }
+
+    @Test
+    public void shouldCheckIfContactWithPlaneAndReturnTrueWhenContact() {
+        //given
+        sphere.setCenter(new Point(10, 10, 10));
+        sphere.setRadius(10);
+        //when
+        boolean result = sphereCalculator.doesContactWithPlane(sphere, CoordinatePlane.OYZ);
+        //then
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void shouldCheckIfContactWithPlaneAndReturnFalseWhenDoesNotContact() {
+        //given
+        sphere.setCenter(new Point(10, 10, 10));
+        sphere.setRadius(9);
+        //when
+        boolean result = sphereCalculator.doesContactWithPlane(sphere, CoordinatePlane.OYZ);
+        //then
+        Assert.assertFalse(result);
     }
 
 
