@@ -1,4 +1,4 @@
-package com.epam.geometry;
+package com.epam.geometry.facade;
 
 import com.epam.geometry.creator.ShapeCreator;
 import com.epam.geometry.creator.SphereCreator;

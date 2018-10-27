@@ -6,14 +6,16 @@ import com.epam.geometry.service.SphereCalculator;
 import com.epam.geometry.service.commandsForVolumeRatio.CommandProvider;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class VolumeGreaterThenSpecification implements Specification<Sphere> {
 
     private double volume;
-    //via new
-    private List<CoordinatePlane> coordinatePlanes = new ArrayList<>();
-    private SphereCalculator sphereCalculator = new SphereCalculator(new CommandProvider(), coordinatePlanes);
+    private SphereCalculator sphereCalculator = new SphereCalculator(new CommandProvider(),
+            Arrays.asList(CoordinatePlane.OYZ,
+                    CoordinatePlane.XOZ,
+                    CoordinatePlane.XYO));
 
     public VolumeGreaterThenSpecification(double volume) {
         this.volume = volume;
