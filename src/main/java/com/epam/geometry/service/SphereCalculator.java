@@ -2,8 +2,8 @@ package com.epam.geometry.service;
 
 import com.epam.geometry.entity.CoordinatePlane;
 import com.epam.geometry.entity.Sphere;
-import com.epam.geometry.service.commandsForVolumeRatio.Command;
-import com.epam.geometry.service.commandsForVolumeRatio.CommandProvider;
+import com.epam.geometry.service.commandsForSphereCenter.Command;
+import com.epam.geometry.service.commandsForSphereCenter.CommandProvider;
 
 import java.util.List;
 
@@ -23,17 +23,14 @@ public class SphereCalculator {
     }
 
     public double calculateVolume(Sphere sphere) {
-        return calculateWithFormula(sphere, 3, 4 / 3);
+        return calculateWithFormula(sphere, 3, (4d / 3d));
     }
 
-    //TODO the best name
     private double calculateWithFormula(Sphere sphere, double x, double y) {
         double result = 0;
         if (sphere != null) {
             if (sphere.getRadius() > 0) {
-                return Math.pow(sphere
-                        .getRadius(), x) *
-                        Math.PI * y;
+                return (Math.pow(sphere.getRadius(), x)) * (Math.PI * y);
             } else {
                 throw new ServiceException();
             }

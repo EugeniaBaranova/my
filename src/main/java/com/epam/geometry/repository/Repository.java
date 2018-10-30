@@ -1,5 +1,7 @@
-package com.epam.geometry.shapeRepository;
+package com.epam.geometry.repository;
 
+
+import com.epam.geometry.repository.specification.Specification;
 
 import java.util.List;
 import java.util.Optional;

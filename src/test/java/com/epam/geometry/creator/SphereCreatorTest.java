@@ -32,9 +32,12 @@ public class SphereCreatorTest {
     @Test
     public void shouldCreateSphereWhenGivenValidData() {
         //given
-        when(validationResult.getError()).thenReturn(null);
-        when(validationResult.getResult()).thenReturn(TEST_DATA_KEEPER);
-        when(sphereValidator.validate(any(PossibleSphereDataKeeper.class))).thenReturn(validationResult);
+        when(validationResult.getError())
+                .thenReturn(null);
+        when(validationResult.getResult())
+                .thenReturn(TEST_DATA_KEEPER);
+        when(sphereValidator.validate(any(PossibleSphereDataKeeper.class)))
+                .thenReturn(validationResult);
         List<PossibleSphereDataKeeper> parametersForSpheres = new ArrayList<>();
         parametersForSpheres.add(TEST_DATA_KEEPER);
         parametersForSpheres.add(TEST_DATA_KEEPER);

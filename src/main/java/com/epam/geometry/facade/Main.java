@@ -12,9 +12,8 @@ import com.epam.geometry.reader.SphereStringValidator;
 import com.epam.geometry.reader.StringValidator;
 import com.epam.geometry.reader.exception.MissingDataException;
 import com.epam.geometry.service.SphereCalculator;
-import com.epam.geometry.service.commandsForVolumeRatio.CommandProvider;
+import com.epam.geometry.service.commandsForSphereCenter.CommandProvider;
 import com.epam.geometry.stringParser.PossibleShapeDataKeeper;
-import com.epam.geometry.stringParser.PossibleSphereDataKeeper;
 import com.epam.geometry.stringParser.ShapeStringParser;
 import com.epam.geometry.stringParser.SphereStringParser;
 

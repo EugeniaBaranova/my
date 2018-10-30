@@ -1,9 +1,9 @@
-package com.epam.geometry.shapeRepository;
+package com.epam.geometry.repository.specification;
 
 import com.epam.geometry.entity.CoordinatePlane;
 import com.epam.geometry.entity.Sphere;
 import com.epam.geometry.service.SphereCalculator;
-import com.epam.geometry.service.commandsForVolumeRatio.CommandProvider;
+import com.epam.geometry.service.commandsForSphereCenter.CommandProvider;
 
 import java.util.Arrays;
 

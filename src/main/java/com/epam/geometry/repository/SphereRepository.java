@@ -1,6 +1,7 @@
-package com.epam.geometry.shapeRepository;
+package com.epam.geometry.repository;
 
 import com.epam.geometry.entity.Sphere;
+import com.epam.geometry.repository.specification.Specification;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,9 @@ public class SphereRepository implements Repository<Sphere> {
         List<Sphere> spheres = data.values().stream()
                 .filter(o -> specification.specified(o))
                 .collect(Collectors.toList());
+        if(spheres.isEmpty()){
+            spheres = null;
+        }
         return Optional.ofNullable(spheres);
     }
 }

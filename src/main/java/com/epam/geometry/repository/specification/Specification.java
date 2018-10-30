@@ -1,4 +1,4 @@
-package com.epam.geometry.shapeRepository;
+package com.epam.geometry.repository.specification;
 
 public interface Specification<T> {
 

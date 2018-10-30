@@ -2,14 +2,11 @@ package com.epam.geometry.service;
 
 import com.epam.geometry.entity.CoordinatePlane;
 import com.epam.geometry.entity.Point;
-import com.epam.geometry.entity.Shape;
 import com.epam.geometry.entity.Sphere;
-import com.epam.geometry.service.commandsForVolumeRatio.CommandProvider;
+import com.epam.geometry.service.commandsForSphereCenter.CommandProvider;
 import org.junit.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 
@@ -17,9 +14,9 @@ public class SphereCalculatorTest {
 
     private static final double SURFACE_AREA_WHEN_RADIUS_IS_FOUR = 201.06192982974676;
     private static final double SURFACE_AREA_WHEN_RADIUS_IS_TWO = 50.26548245743669;
-    private static final double VOLUME_WHEN_RADIUS_IS_THREE = 84.82300164692441;
-    private static final double VOLUME_WHEN_RADIUS_IS_TEN = 3141.592653589793;
-    private static final double VOLUME_RATIO = 0.7636684303350969;
+    private static final double VOLUME_WHEN_RADIUS_IS_THREE = 113.09733552923254;
+    private static final double VOLUME_WHEN_RADIUS_IS_TEN = 4188.790204786391;
+    private static final double VOLUME_RATIO = 1.3515579071134627;
 
     private Sphere sphere;
 
@@ -30,16 +27,13 @@ public class SphereCalculatorTest {
 
     @Before
     public void setUp() {
-
         commandProvider = new CommandProvider();
         sphereCalculator = new SphereCalculator(commandProvider,
                 Arrays.asList(CoordinatePlane.OYZ,
                         CoordinatePlane.XOZ,
                         CoordinatePlane.XYO));
         sphere = new Sphere();
-
     }
-
 
     @Test
     public void shouldCalculateSurfaceAreaWhenRadiusIsFour() {
