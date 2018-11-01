@@ -1,6 +1,6 @@
 package com.epam.geometry.creator.validator;
 
-import com.epam.geometry.stringParser.PossibleSphereDataKeeper;
+import com.epam.geometry.stringParser.impl.PossibleSphereDataKeeper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ public class SphereValidatorTest {
     private PossibleSphereDataKeeper INVALID_DATA_KEEPER=
             new PossibleSphereDataKeeper(new ArrayDeque<>(Arrays.asList(1.1, -5.02, -6.2, 0.0)));
 
-    private ShapeValidator sphereValidator = new SphereValidator();
+    private SphereValidator sphereValidator = new SphereValidator();
 
     @Test
     public void shouldValidateAndGetResultWithDataKeeperWhenGivenValidData() {

@@ -1,5 +1,7 @@
 package com.epam.geometry.stringParser;
 
+import com.epam.geometry.stringParser.impl.PossibleSphereDataKeeper;
+import com.epam.geometry.stringParser.impl.SphereStringParser;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -11,7 +11,8 @@ public class VolumeGreaterThenSpecification implements Specification<Sphere> {
 
     private double volume;
     private SphereCalculator sphereCalculator = new SphereCalculator(new CommandProvider(),
-            Arrays.asList(CoordinatePlane.OYZ,
+            Arrays.asList(
+                    CoordinatePlane.OYZ,
                     CoordinatePlane.XOZ,
                     CoordinatePlane.XYO));
 

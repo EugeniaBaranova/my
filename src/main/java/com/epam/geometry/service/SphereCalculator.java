@@ -4,6 +4,7 @@ import com.epam.geometry.entity.CoordinatePlane;
 import com.epam.geometry.entity.Sphere;
 import com.epam.geometry.service.commandsForSphereCenter.Command;
 import com.epam.geometry.service.commandsForSphereCenter.CommandProvider;
+import com.epam.geometry.service.exception.ServiceException;
 
 import java.util.List;
 
@@ -29,8 +30,10 @@ public class SphereCalculator {
     private double calculateWithFormula(Sphere sphere, double x, double y) {
         double result = 0;
         if (sphere != null) {
-            if (sphere.getRadius() > 0) {
-                return (Math.pow(sphere.getRadius(), x)) * (Math.PI * y);
+            double radius = sphere.getRadius();
+            if (radius > 0) {
+                return (Math.pow(radius, x))
+                        * (Math.PI * y);
             } else {
                 throw new ServiceException();
             }
@@ -48,12 +51,13 @@ public class SphereCalculator {
                         Double sphereRadius = sphere.getRadius();
                         Command command = commandProvider.getCommand(coordinatePlane);
                         if (command != null) {
-                            double heightOfSphericalCap = sphereRadius - Math.abs(command
-                                    .execute(sphere));
+                            double centerCoordinate = command.execute(sphere);
+                            double heightOfSphericalCap = sphereRadius - Math.abs(centerCoordinate);
                             double volumeOfSphericalCap = Math.PI *
                                     (Math.pow(heightOfSphericalCap, 2) / 3) *
-                                    (3 * sphere.getRadius() - heightOfSphericalCap);
-                            double volumeOfRemainingSphericalSegment = calculateVolume(sphere) - volumeOfSphericalCap;
+                                    (3 * sphereRadius - heightOfSphericalCap);
+                            double volumeOfRemainingSphericalSegment =
+                                    calculateVolume(sphere) - volumeOfSphericalCap;
                             return volumeOfRemainingSphericalSegment / volumeOfSphericalCap;
                         }
                     }
@@ -82,7 +86,9 @@ public class SphereCalculator {
                 if (coordinatePlane.equals(plane)) {
                     Command command = commandProvider.getCommand(coordinatePlane);
                     if (command != null) {
-                        return (Math.abs(command.execute(sphere)) - sphere.getRadius());
+                        double centerCoordinate = command.execute(sphere);
+                        double radius = sphere.getRadius();
+                        return (Math.abs(centerCoordinate) - radius);
                     }
                 }
             }

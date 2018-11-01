@@ -3,7 +3,7 @@ package com.epam.geometry.generator;
 public class IdGenerator {
 
     private static IdGenerator instance;
-    private long count = 1;
+    private static long count = 1;
 
     private IdGenerator() {
     }

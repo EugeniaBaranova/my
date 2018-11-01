@@ -16,13 +16,17 @@ public class DistanceCenterOriginInRangeSpecification implements Specification<S
     @Override
     public boolean specified(Sphere object) {
         Point center = object.getCenter();
-        double currentVolume = Math.sqrt(
-                Math.pow(center
-                        .getX(), 2)
-                        + Math.pow(center
-                        .getY(), 2)
-                        + Math.pow(center
-                        .getZ(), 2));
-        return Double.compare(currentVolume, minVolume) >= 0 && Double.compare(currentVolume, maxVolume) <= 0;
+        double x = center.getX();
+        double y = center.getY();
+        double z = center.getZ();
+
+        double squareX = Math.pow(x, 2);
+        double squareY = Math.pow(y, 2);
+        double squareZ = Math.pow(z, 2);
+
+        double currentVolume = Math.sqrt(squareX + squareY + squareZ);
+
+        return Double.compare(currentVolume, minVolume) >= 0
+                && Double.compare(currentVolume, maxVolume) <= 0;
     }
 }

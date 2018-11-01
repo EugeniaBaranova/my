@@ -14,28 +14,33 @@ public class SphereRepository implements Repository<Sphere> {
     private Map<Long, Sphere> data = new HashMap<>();
 
     @Override
-    public void add(Sphere object) {
-        data.put(object.getId(), object);
+    public void add(Sphere sphere) {
+        long id = sphere.getId();
+        data.put(id, sphere);
     }
 
     @Override
-    public void remove(Sphere object) {
-        data.remove(object.getId());
+    public void remove(Sphere sphere) {
+        long id = sphere.getId();
+        data.remove(id);
     }
 
     @Override
-    public void update(Sphere object, long id) {
-        data.replace(id, object);
+    public void update(Sphere sphere, long id) {
+        data.replace(id, sphere);
     }
 
     @Override
     public Optional<List<Sphere>> findBy(Specification specification) {
-        List<Sphere> spheres = data.values().stream()
+        List<Sphere> spheres = data.values()
+                .stream()
                 .filter(o -> specification.specified(o))
-                .collect(Collectors.toList());
+                .collect(Collectors
+                        .toList());
         if(spheres.isEmpty()){
             spheres = null;
         }
         return Optional.ofNullable(spheres);
     }
+
 }

@@ -12,24 +12,18 @@ public class SphereDataStorage {
     private double volume;
     private double surfaceArea;
 
-    private SphereObservable sphereObservable;
-
     private SphereCalculator sphereCalculator = new SphereCalculator(new CommandProvider(),
             Arrays.asList(
                     CoordinatePlane.OYZ,
                     CoordinatePlane.XOZ,
                     CoordinatePlane.XYO));
 
-    public SphereDataStorage(SphereObservable sphereObservable) {
-        this.sphereObservable = sphereObservable;
-    }
-
     public double getVolume() {
         return volume;
     }
 
     public void setVolume(SphereObservable sphereObservable) {
-        this.volume = sphereCalculator.calculateVolume(this.sphereObservable);
+        volume = sphereCalculator.calculateVolume(sphereObservable);
     }
 
     public double getSurfaceArea() {
@@ -37,6 +31,6 @@ public class SphereDataStorage {
     }
 
     public void setSurfaceArea(SphereObservable sphereObservable) {
-        this.surfaceArea = sphereCalculator.calculateSurfaceArea(this.sphereObservable);
+        surfaceArea = sphereCalculator.calculateSurfaceArea(sphereObservable);
     }
 }

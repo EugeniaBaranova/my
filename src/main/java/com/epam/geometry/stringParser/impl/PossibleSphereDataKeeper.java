@@ -1,4 +1,6 @@
-package com.epam.geometry.stringParser;
+package com.epam.geometry.stringParser.impl;
+
+import com.epam.geometry.stringParser.PossibleShapeDataKeeper;
 
 import java.util.Queue;
 
@@ -10,10 +12,14 @@ public class PossibleSphereDataKeeper implements PossibleShapeDataKeeper {
     private double possibleZofCenter;
 
     public PossibleSphereDataKeeper(Queue<Double> possibleParameters) {
-        this.possibleXofCenter = possibleParameters.poll();
-        this.possibleYofCenter = possibleParameters.poll();
-        this.possibleZofCenter = possibleParameters.poll();
-        this.possibleRadius = possibleParameters.poll();
+        this.possibleXofCenter =
+                possibleParameters.poll();
+        this.possibleYofCenter =
+                possibleParameters.poll();
+        this.possibleZofCenter =
+                possibleParameters.poll();
+        this.possibleRadius =
+                possibleParameters.poll();
     }
 
     public double getPossibleRadius() {

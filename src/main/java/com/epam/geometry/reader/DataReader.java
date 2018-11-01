@@ -16,30 +16,35 @@ public class DataReader {
     private static final Logger logger = Logger.getLogger(DataReader.class);
 
     public List<String> readLines(String fileName) throws MissingDataException {
-        logger.info("Read file.");
+        logger.debug("Start to execute method.");
 
         List<String> lines = new ArrayList<>();
         Optional<String> filePath = getFilePath(fileName);
         if(filePath.isPresent()){
-            String line;
             try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath.get()))) {
-                while (((line = bufferedReader.readLine()) != null)) {
+                String line = bufferedReader.readLine();
+                while (line != null) {
                     lines.add(line);
+                    line = bufferedReader.readLine();
                 }
             } catch (IOException e) {
                 logger.error("Can't read file.", e);
                 throw new MissingDataException(e);
             }
         }
+        logger.debug("Stop to execute method.");
         return lines;
     }
 
 
     private Optional<String> getFilePath(String fileName){
         ClassLoader classLoader = getClass().getClassLoader();
-        URL resource = classLoader.getResource(fileName);
-        if(resource != null){
-            return Optional.of(resource.getPath());
+        if (classLoader != null){
+            URL resource = classLoader.getResource(fileName);
+            if(resource != null){
+                String path = resource.getPath();
+                return Optional.of(path);
+            }
         }
         return Optional.empty();
     }

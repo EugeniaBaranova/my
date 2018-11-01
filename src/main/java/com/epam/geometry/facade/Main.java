@@ -1,25 +1,7 @@
 package com.epam.geometry.facade;
 
-import com.epam.geometry.creator.ShapeCreator;
-import com.epam.geometry.creator.SphereCreator;
-import com.epam.geometry.creator.validator.ShapeValidator;
-import com.epam.geometry.creator.validator.SphereValidator;
-import com.epam.geometry.entity.CoordinatePlane;
-import com.epam.geometry.entity.Shape;
-import com.epam.geometry.entity.Sphere;
 import com.epam.geometry.reader.DataReader;
-import com.epam.geometry.reader.SphereStringValidator;
-import com.epam.geometry.reader.StringValidator;
 import com.epam.geometry.reader.exception.MissingDataException;
-import com.epam.geometry.service.SphereCalculator;
-import com.epam.geometry.service.commandsForSphereCenter.CommandProvider;
-import com.epam.geometry.stringParser.PossibleShapeDataKeeper;
-import com.epam.geometry.stringParser.ShapeStringParser;
-import com.epam.geometry.stringParser.SphereStringParser;
-
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
 public class Main {
 
@@ -39,7 +21,7 @@ public class Main {
        /* DataReader dataReader = new DataReader();
         StringValidator sphereStringValidator = new SphereStringValidator();
         ShapeStringParser sphereStringParser = new SphereStringParser();
-        ShapeValidator sphereValidator = new SphereValidator();
+        SphereValidator sphereValidator = new SphereValidator();
         ShapeCreator sphereCreator = new SphereCreator(sphereValidator);
         CommandProvider commandProvider = new CommandProvider();
         List<CoordinatePlane> coordinatePlanes = Arrays.asList(

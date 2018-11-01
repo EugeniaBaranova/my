@@ -12,7 +12,11 @@ public class SphereObservable extends Sphere implements Observable<Observer> {
 
     private List<Observer> observers = new ArrayList<>();
 
-    private SphereDataStorage sphereDataStorage = new SphereDataStorage(this);
+    private SphereDataStorage sphereDataStorage;
+
+    public SphereObservable(SphereDataStorage sphereDataStorage) {
+        this.sphereDataStorage = sphereDataStorage;
+    }
 
     public SphereDataStorage getSphereDataStorage() {
         return sphereDataStorage;

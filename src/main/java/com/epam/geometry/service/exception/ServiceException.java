@@ -1,4 +1,4 @@
-package com.epam.geometry.service;
+package com.epam.geometry.service.exception;
 
 public class ServiceException extends RuntimeException {
     public ServiceException() {

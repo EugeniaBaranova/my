@@ -1,6 +1,6 @@
 package com.epam.geometry.creator.validator;
 
-import com.epam.geometry.stringParser.PossibleSphereDataKeeper;
+import com.epam.geometry.stringParser.impl.PossibleSphereDataKeeper;
 
 import java.util.Objects;
 

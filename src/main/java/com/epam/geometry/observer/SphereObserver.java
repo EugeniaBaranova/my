@@ -20,8 +20,7 @@ public class SphereObserver implements Observer {
 
     @Override
     public void update() {
-        SphereDataStorage sphereDataStorage = sphereObservable
-                .getSphereDataStorage();
+        SphereDataStorage sphereDataStorage = sphereObservable.getSphereDataStorage();
         sphereDataStorage.setVolume(sphereObservable);
         sphereDataStorage.setSurfaceArea(sphereObservable);
     }

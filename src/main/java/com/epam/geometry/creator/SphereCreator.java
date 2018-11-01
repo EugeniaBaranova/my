@@ -1,22 +1,22 @@
 package com.epam.geometry.creator;
 
+import com.epam.geometry.creator.validator.SphereValidator;
 import com.epam.geometry.entity.Point;
 import com.epam.geometry.entity.Shape;
 import com.epam.geometry.entity.Sphere;
 import com.epam.geometry.creator.validator.SphereValidationResult;
-import com.epam.geometry.creator.validator.ShapeValidator;
 import com.epam.geometry.generator.IdGenerator;
 import com.epam.geometry.stringParser.PossibleShapeDataKeeper;
-import com.epam.geometry.stringParser.PossibleSphereDataKeeper;
+import com.epam.geometry.stringParser.impl.PossibleSphereDataKeeper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SphereCreator implements ShapeCreator {
 
-    private ShapeValidator validator;
+    private SphereValidator validator;
 
-    public SphereCreator(ShapeValidator validator) {
+    public SphereCreator(SphereValidator validator) {
         this.validator = validator;
     }
 
@@ -27,7 +27,7 @@ public class SphereCreator implements ShapeCreator {
         if (parametersForSpheres != null) {
 
             for (PossibleShapeDataKeeper sphereDataKeeper : parametersForSpheres) {
-                SphereValidationResult validateResult = validator.validate(sphereDataKeeper);
+                SphereValidationResult validateResult = validator.validate((PossibleSphereDataKeeper)sphereDataKeeper);
                 if (validateResult.getError() == null) {
 
                     PossibleSphereDataKeeper sphereParameters = validateResult.getResult();

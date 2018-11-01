@@ -4,6 +4,7 @@ import com.epam.geometry.entity.CoordinatePlane;
 import com.epam.geometry.entity.Point;
 import com.epam.geometry.entity.Sphere;
 import com.epam.geometry.service.commandsForSphereCenter.CommandProvider;
+import com.epam.geometry.service.exception.ServiceException;
 import org.junit.*;
 
 import java.util.Arrays;

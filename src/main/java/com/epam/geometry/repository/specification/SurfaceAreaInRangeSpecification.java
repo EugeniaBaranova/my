@@ -12,7 +12,8 @@ public class SurfaceAreaInRangeSpecification implements Specification<Sphere>{
     private double minVolume;
     private double maxVolume;
     private SphereCalculator sphereCalculator = new SphereCalculator(new CommandProvider(),
-            Arrays.asList(CoordinatePlane.OYZ,
+            Arrays.asList(
+                    CoordinatePlane.OYZ,
                     CoordinatePlane.XOZ,
                     CoordinatePlane.XYO));
 
@@ -24,6 +25,7 @@ public class SurfaceAreaInRangeSpecification implements Specification<Sphere>{
     @Override
     public boolean specified(Sphere object) {
         double currentVolume = sphereCalculator.calculateSurfaceArea(object);
-        return Double.compare(currentVolume, minVolume) >= 0 && Double.compare(currentVolume, maxVolume) <= 0;
+        return Double.compare(currentVolume, minVolume) >= 0
+                && Double.compare(currentVolume, maxVolume) <= 0;
     }
 }
