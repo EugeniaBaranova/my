@@ -1,9 +1,7 @@
 package com.epam.geometry.creator.validator;
 
-import com.epam.geometry.stringParser.PossibleShapeDataKeeper;
+public interface ShapeValidator<T> {
 
-public interface ShapeValidator {
-
-    SphereValidationResult validate(PossibleShapeDataKeeper parametersForOneSphere);
+    SphereValidationResult validate(T possibleShapeDataKeeper);
 
 }

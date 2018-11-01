@@ -5,7 +5,7 @@ import com.epam.geometry.entity.Shape;
 import com.epam.geometry.entity.Sphere;
 import com.epam.geometry.creator.validator.SphereValidationResult;
 import com.epam.geometry.creator.validator.ShapeValidator;
-import com.epam.geometry.generator.IDGenerator;
+import com.epam.geometry.generator.IdGenerator;
 import com.epam.geometry.stringParser.PossibleShapeDataKeeper;
 import com.epam.geometry.stringParser.PossibleSphereDataKeeper;
 
@@ -25,23 +25,32 @@ public class SphereCreator implements ShapeCreator {
     public List<? extends Shape> create(List<? extends PossibleShapeDataKeeper> parametersForSpheres) {
         List<Sphere> spheres = new ArrayList<>();
         if (parametersForSpheres != null) {
-            for (PossibleShapeDataKeeper sphereDataKeeper: parametersForSpheres) {
-                SphereValidationResult validateResult = validator.validate((PossibleSphereDataKeeper)sphereDataKeeper);
+
+            for (PossibleShapeDataKeeper sphereDataKeeper : parametersForSpheres) {
+                SphereValidationResult validateResult = validator.validate(sphereDataKeeper);
                 if (validateResult.getError() == null) {
+
                     PossibleSphereDataKeeper sphereParameters = validateResult.getResult();
                     Sphere sphere = new Sphere();
+
+                    double possibleXofCenter = sphereParameters.getPossibleXofCenter();
+                    double possibleYofCenter = sphereParameters.getPossibleYofCenter();
+                    double possibleZofCenter = sphereParameters.getPossibleZofCenter();
+                    double possibleRadius = sphereParameters.getPossibleRadius();
+
+                    IdGenerator idGenerator = IdGenerator.getInstance();
+                    long id = idGenerator.getCount();
+
                     sphere.setCenter(new Point(
-                            sphereParameters.getPossibleXofCenter(),
-                            sphereParameters.getPossibleYofCenter(),
-                            sphereParameters.getPossibleZofCenter()));
-                    sphere.setRadius(sphereParameters.getPossibleRadius());
-                    sphere.setId(IDGenerator.getInstance()
-                            .getCount());
+                            possibleXofCenter,
+                            possibleYofCenter,
+                            possibleZofCenter));
+                    sphere.setRadius(possibleRadius);
+                    sphere.setId(id);
                     spheres.add(sphere);
                 }
             }
         }
         return spheres;
-
     }
 }

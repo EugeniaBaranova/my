@@ -11,30 +11,18 @@ import java.util.Arrays;
 public class SphereObserver implements Observer {
 
     private SphereObservable sphereObservable;
-    private double volume;
-    private double surfaceArea;
-
-    private SphereCalculator sphereCalculator = new SphereCalculator(new CommandProvider(),
-            Arrays.asList(CoordinatePlane.OYZ,
-                    CoordinatePlane.XOZ,
-                    CoordinatePlane.XYO));
 
     public SphereObserver(SphereObservable sphereObservable) {
         this.sphereObservable = sphereObservable;
-        this.sphereObservable.attach(this);
-    }
-
-    public double getVolume() {
-        return volume;
-    }
-
-    public double getSurfaceArea() {
-        return surfaceArea;
+        this.sphereObservable
+                .attach(this);
     }
 
     @Override
     public void update() {
-        this.volume = sphereCalculator.calculateVolume(this.sphereObservable);
-        this.surfaceArea = sphereCalculator.calculateSurfaceArea(this.sphereObservable);
+        SphereDataStorage sphereDataStorage = sphereObservable
+                .getSphereDataStorage();
+        sphereDataStorage.setVolume(sphereObservable);
+        sphereDataStorage.setSurfaceArea(sphereObservable);
     }
 }

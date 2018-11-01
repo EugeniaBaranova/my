@@ -4,7 +4,7 @@ public interface Observable<T> {
 
     void notifyObservers();
 
-    void attach(Observer observer);
+    void attach(T observer);
 
 
 }

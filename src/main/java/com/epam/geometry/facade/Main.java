@@ -26,9 +26,17 @@ public class Main {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MissingDataException {
 
         DataReader dataReader = new DataReader();
+        dataReader.readLines("spheres.txt")
+                .get(20);
+
+
+
+
+
+       /* DataReader dataReader = new DataReader();
         StringValidator sphereStringValidator = new SphereStringValidator();
         ShapeStringParser sphereStringParser = new SphereStringParser();
         ShapeValidator sphereValidator = new SphereValidator();
@@ -53,7 +61,7 @@ public class Main {
             }
         } catch (MissingDataException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
     }

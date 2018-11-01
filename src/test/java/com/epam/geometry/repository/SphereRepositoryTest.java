@@ -11,6 +11,7 @@ import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -35,6 +36,7 @@ public class SphereRepositoryTest {
         //when
         Optional<List<Sphere>> result = repository.findBy(mockSpecification);
         //then
+        verify(mockSpecification).specified(FIRST_SPHERE);
         Assert.assertTrue(result.isPresent());
         Assert.assertEquals(1, result.get()
                 .size());
@@ -49,6 +51,7 @@ public class SphereRepositoryTest {
         //when
         Optional<List<Sphere>> result = repository.findBy(mockSpecification);
         //then
+        verify(mockSpecification).specified(FIRST_SPHERE);
         Assert.assertFalse(result.isPresent());
     }
 

@@ -1,16 +1,16 @@
 package com.epam.geometry.generator;
 
-public class IDGenerator {
+public class IdGenerator {
 
-    private static IDGenerator instance;
+    private static IdGenerator instance;
     private long count = 1;
 
-    private IDGenerator() {
+    private IdGenerator() {
     }
 
-    public static IDGenerator getInstance() {
+    public static IdGenerator getInstance() {
         if (instance == null) {
-            instance = new IDGenerator();
+            instance = new IdGenerator();
         }
         return instance;
     }

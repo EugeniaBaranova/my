@@ -13,7 +13,7 @@ public class SphereObserverTest {
     private SphereObservable sphereObservable = mock(SphereObservable.class);
     private SphereObserver sphereObserver = new SphereObserver(sphereObservable);
 
-    @Test
+   /* @Test
     public void shouldUpdateValuesWhenSetNewParameters() {
         //given
         when(sphereObservable.getRadius()).thenReturn(3.0);
@@ -22,7 +22,7 @@ public class SphereObserverTest {
         //then
         Assert.assertThat(113.09733552923254,is(sphereObserver.getVolume()));
         Assert.assertThat(113.09733552923255,is(sphereObserver.getSurfaceArea()));
-    }
+    }*/
 
 
 }
