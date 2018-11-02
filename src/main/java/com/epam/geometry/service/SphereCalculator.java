@@ -42,6 +42,7 @@ public class SphereCalculator {
     }
 
 
+
     public double calculateVolumeRatio(Sphere sphere, CoordinatePlane coordinatePlane) {
         double result = 0;
         if (sphere != null && coordinatePlane != null) {
